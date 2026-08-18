@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yadav Tours and Travels - Car Rental & Tours</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-banner.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 1rem;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ffd700;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Fleet */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .fleet-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fleet-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .fleet-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fleet-info {
+            padding: 1.5rem;
+        }
+
+        .fleet-info h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .fleet-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .fleet-features li {
+            padding: 0.3rem 0;
+            color: #666;
+        }
+
+        .fleet-features li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Premium Reviews Section */
+        #reviews {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="%23ffffff" fill-opacity="0.05" d="M0,0 Q300,40 600,20 T1200,40 L1200,120 L0,120 Z"/></svg>') repeat-x;
+            opacity: 0.3;
+        }
+
+        #reviews .section-title {
+            color: white;
+        }
+
+        #reviews .section-title:after {
+            background: #ffd700;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviews-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .reviews-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .rating-summary {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 2rem 0;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .rating-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffd700;
+            line-height: 1;
+        }
+
+        .rating-stars {
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 0.5rem 0;
+        }
+
+        .rating-count {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-card {
+            background: rgba(255,255,255,0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: #ffd700;
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(255,215,0,0.4);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviewer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            border: 3px solid #ffd700;
+        }
+
+        .reviewer-info h4 {
+            margin: 0;
+            color: #1e3c72;
+            font-size: 1.2rem;
+        }
+
+        .reviewer-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .review-text {
+            color: #333;
+            line-height: 1.8;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .review-date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .review-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .add-review-section {
+            margin-top: 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .add-review-btn {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+        }
+
+        .add-review-btn:hover {
+            background: #ffed4e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,215,0,0.6);
+        }
+
+        .review-form-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .review-form-modal.active {
+            display: flex;
+        }
+
+        .review-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 2rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffd700;
+        }
+
+        .review-form-container h2 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-header h2 {
+                font-size: 2rem;
+            }
+
+            .rating-number {
+                font-size: 3rem;
+            }
+
+            .review-form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: #1e3c72;
+        }
+
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #f0f0f0;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer img {
+            height: 80px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .call-btn {
+            background: #ff4757;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1a1a;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .contact-container,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .logo-img {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Yadav Tours Logo" class="logo-img">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About Us</a></li>
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#fleet" onclick="closeMenu()">Our Fleet</a></li>
+                <li><a href="trip-calculator.html" onclick="closeMenu()">Trip Calculator</a></li>
+                <li><a href="#reviews" onclick="closeMenu()">Reviews</a></li>
+                <li><a href="#why-us" onclick="closeMenu()">Why Choose Us</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Trusted Travel Partner</h1>
+            <p>Premium Car Rental Services for Every Journey</p>
+            <p class="tagline">We make relation not money</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Book Now</a>
+                <a href="#fleet" class="btn btn-secondary">View Fleet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/about.jpg" alt="Our Fleet">
+            </div>
+            <div>
+                <h3 style="color: #1e3c72; margin-bottom: 1rem;">Welcome to Yadav Tours and Travels</h3>
+                <p style="margin-bottom: 1rem;">We are a trusted car rental and tours service provider dedicated to making your journeys comfortable, safe, and memorable. With years of experience in the travel industry, we specialize in providing premium transportation solutions for tourists, families, and corporate clients.</p>
+                <p style="margin-bottom: 1rem;">Our commitment to excellence, professional drivers, and well-maintained fleet ensures that every trip with us is a pleasant experience. Whether you're planning a family vacation, a business trip, or exploring local attractions, we have the perfect vehicle for your needs.</p>
+                <p style="margin-bottom: 1rem;"><strong>At Yadav Tours and Travels, we believe in building relationships, not just transactions. We make relation not money.</strong></p>
+                <p>Customer satisfaction is our top priority. We believe in building long-term relationships with our clients through reliable service and transparent pricing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: #f8f9fa;">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏖️</div>
+                <h3>Tourist Trips</h3>
+                <p>Explore beautiful destinations with our comfortable vehicles and experienced drivers who know the best routes and attractions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family Travel</h3>
+                <p>Spacious and safe vehicles perfect for family outings, vacations, and special occasions with your loved ones.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Corporate Travel</h3>
+                <p>Professional transportation solutions for business meetings, conferences, and corporate events with punctuality guaranteed.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏙️</div>
+                <h3>Local Journeys</h3>
+                <p>Convenient local transportation for city tours, shopping trips, and daily commute requirements.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛣️</div>
+                <h3>Outstation Trips</h3>
+                <p>Long-distance travel made comfortable with well-maintained vehicles and experienced drivers for outstation journeys.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎉</div>
+                <h3>Special Events</h3>
+                <p>Premium car rental services for weddings, parties, and special celebrations to make your events memorable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet">
+        <h2 class="section-title">Our Fleet</h2>
+        <div class="fleet-grid">
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="images/sedan.jpg" alt="Sedan">
+                </div>
+                <div class="fleet-info">
+                    <h3>Sedan Cars</h3>
+                    <p>Comfortable sedans perfect for city travel and small families</p>
+                    <ul class="fleet-features">
+                        <li>AC with Climate Control</li>
+                        <li>4-5 Seater Capacity</li>
+                        <li>Fuel Efficient</li>
+                        <li>Professional Driver</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="images/ertiga.jpg" alt="Ertiga">
+                </div>
+                <div class="fleet-info">
+                    <h3>Maruti Ertiga</h3>
+                    <p>Spacious vehicles ideal for family trips and group travel</p>
+                    <ul class="fleet-features">
+                        <li>7 Seater Comfort</li>
+                        <li>Spacious Interiors</li>
+                        <li>Excellent Mileage</li>
+                        <li>Modern Amenities</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="images/fleet1.jpg" alt="Fleet Cars">
+                </div>
+                <div class="fleet-info">
+                    <h3>Premium Fleet</h3>
+                    <p>Well-maintained vehicles for special occasions</p>
+                    <ul class="fleet-features">
+                        <li>Decorated for Events</li>
+                        <li>Professional Service</li>
+                        <li>Clean & Sanitized</li>
+                        <li>GPS Enabled</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fleet-card">
+                <div class="fleet-image">
+                    <img src="images/fleet2.jpg" alt="Promotional Fleet">
+                </div>
+                <div class="fleet-info">
+                    <h3>Luxury Options</h3>
+                    <p>Premium vehicles for corporate and special occasions</p>
+                    <ul class="fleet-features">
+                        <li>Executive Interiors</li>
+                        <li>Advanced Features</li>
+                        <li>Professional Chauffeurs</li>
+                        <li>VIP Treatment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews">
+        <div class="reviews-header">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p>Trusted by thousands of happy travelers across India</p>
+            <div class="rating-summary">
+                <div class="rating-number">4.9</div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-count">Based on 500+ reviews</div>
+            </div>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">RS</div>
+                    <div class="reviewer-info">
+                        <h4>Rajesh Sharma</h4>
+                        <div class="reviewer-location">📍 Mumbai</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Excellent service! The driver was very professional and the car was spotlessly clean. Used their service for our family trip to Lonavala. Highly recommended for outstation trips."</p>
+                <div class="review-date">December 2024</div>
+            </div>
+
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">PK</div>
+                    <div class="reviewer-info">
+                        <h4>Priya Kapoor</h4>
+                        <div class="reviewer-location">📍 Pune</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Amazing experience! Booked an Ertiga for our wedding. The car was beautifully decorated and arrived on time. The tagline 'We make relation not money' is absolutely true!"</p>
+                <div class="review-date">November 2024</div>
+            </div>
+
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">AM</div>
+                    <div class="reviewer-info">
+                        <h4>Anil Mehta</h4>
+                        <div class="reviewer-location">📍 Thane</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Best car rental service in Mumbai! Used for corporate meetings. Punctual, professional, and affordable. The driver knew all the routes perfectly. Will definitely use again."</p>
+                <div class="review-date">December 2024</div>
+            </div>
+
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">SK</div>
+                    <div class="reviewer-info">
+                        <h4>Sneha Kulkarni</h4>
+                        <div class="reviewer-location">📍 Mumbai</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Wonderful experience for our Shirdi trip! The sedan was comfortable and well-maintained. Driver was courteous and helpful throughout the journey. Great value for money!"</p>
+                <div class="review-date">November 2024</div>
+            </div>
+
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">VG</div>
+                    <div class="reviewer-info">
+                        <h4>Vikram Gupta</h4>
+                        <div class="reviewer-location">📍 Navi Mumbai</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Superb service! Booked for airport pickup and the driver was waiting on time. Car was clean and comfortable. Transparent pricing with no hidden charges. Highly satisfied!"</p>
+                <div class="review-date">December 2024</div>
+            </div>
+
+            <div class="review-card">
+                <span class="review-badge">VERIFIED</span>
+                <div class="review-header">
+                    <div class="reviewer-avatar">MP</div>
+                    <div class="reviewer-info">
+                        <h4>Meera Patel</h4>
+                        <div class="reviewer-location">📍 Mumbai</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Fantastic service for our family vacation to Goa! The SUV was spacious and perfect for our group. Professional driver made the long journey comfortable. Thank you Yadav Tours!"</p>
+                <div class="review-date">October 2024</div>
+            </div>
+        </div>
+
+        <div class="add-review-section">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Share Your Experience</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Your feedback helps us serve you better</p>
+            <button class="add-review-btn" onclick="openReviewModal()">✍️ Write a Review</button>
+        </div>
+    </section>
+
+    <!-- Review Form Modal -->
+    <div class="review-form-modal" id="reviewModal">
+        <div class="review-form-container">
+            <button class="close-modal" onclick="closeReviewModal()">×</button>
+            <h2>Share Your Experience</h2>
+            
+            <form id="reviewForm" action="https://formspree.io/f/xnjavdqo" method="POST">
+                <div class="form-group">
+                    <label>Rate Your Experience *</label>
+                    <div class="star-rating">
+                        <input type="radio" name="rating" value="5" id="star5" required>
+                        <label for="star5">★</label>
+                        <input type="radio" name="rating" value="4" id="star4">
+                        <label for="star4">★</label>
+                        <input type="radio" name="rating" value="3" id="star3">
+                        <label for="star3">★</label>
+                        <input type="radio" name="rating" value="2" id="star2">
+                        <label for="star2">★</label>
+                        <input type="radio" name="rating" value="1" id="star1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewName">Your Name *</label>
+                    <input type="text" id="reviewName" name="reviewer_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewEmail">Email Address *</label>
+                    <input type="email" id="reviewEmail" name="reviewer_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewLocation">City *</label>
+                    <input type="text" id="reviewLocation" name="reviewer_location" placeholder="e.g., Mumbai" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Your Review *</label>
+                    <textarea id="reviewText" name="review_text" rows="5" placeholder="Tell us about your experience with Yadav Tours and Travels..." required></textarea>
+                </div>
+
+                <input type="hidden" name="_subject" value="New Customer Review - Yadav Tours">
+                <input type="hidden" name="form_type" value="customer_review">
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                    Submit Review
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" style="background: #f8f9fa;">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">✅</div>
+                <h3>Well-Maintained Fleet</h3>
+                <p>Regular servicing and sanitization of all vehicles</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👨‍✈️</div>
+                <h3>Professional Drivers</h3>
+                <p>Experienced, licensed, and courteous drivers</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Transparent Pricing</h3>
+                <p>No hidden charges, clear and competitive rates</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🕐</div>
+                <h3>24/7 Availability</h3>
+                <p>Round-the-clock booking and customer support</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <h3>Safety First</h3>
+                <p>GPS tracking and comprehensive insurance coverage</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⭐</div>
+                <h3>Customer Satisfaction</h3>
+                <p>Thousands of happy customers and repeat bookings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <span class="contact-item-icon">📞</span>
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:+918108979842" style="color: #1e3c72; text-decoration: none;">+91 81089 79842</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">📧</span>
+                    <div>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:yadavtoursandtravel8852@gmail.com" style="color: #1e3c72; text-decoration: none;">yadavtoursandtravel8852@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">📍</span>
+                    <div>
+                        <strong>Address:</strong><br>
+                        Mumbai, Maharashtra, India
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">⏰</span>
+                    <div>
+                        <strong>Business Hours:</strong><br>
+                        24/7 Available
+                    </div>
+                </div>
+            </div>
+
+            <form id="enquiryForm" action="https://formspree.io/f/xnjavdqo" method="POST">
+                <div class="success-message" id="successMessage">
+                    Thank you for your enquiry! We will contact you soon.
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error" id="nameError">Please enter your full name</span>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number *</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                    <span class="error" id="mobileError">Please enter a valid 10-digit mobile number</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error" id="emailError">Please enter a valid email address</span>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" id="address" name="address" required>
+                    <span class="error" id="addressError">Please enter your address</span>
+                </div>
+                <div class="form-group">
+                    <label for="requirement">Travel / Car Requirement *</label>
+                    <textarea id="requirement" name="requirement" required></textarea>
+                    <span class="error" id="requirementError">Please describe your travel requirements</span>
+                </div>
+                <input type="hidden" name="_subject" value="New Enquiry from Yadav Tours Website">
+                <input type="hidden" name="_cc" value="yadavtoursandtravel8852@gmail.com">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="images/logo.png" alt="Yadav Tours Logo">
+        <p>&copy; 2024 Yadav Tours and Travels. All rights reserved.</p>
+        <p><strong>We make relation not money</strong></p>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/918928243808" class="floating-btn whatsapp-btn" target="_blank" title="WhatsApp">💬</a>
+        <a href="tel:+918108979842" class="floating-btn call-btn" title="Call Now">📞</a>
+    </div>
+
+    <script>
+        // Review Modal Functions
+        function openReviewModal() {
+            document.getElementById('reviewModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('reviewModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeReviewModal();
+                }
+            });
+        });
+
+        // Review Form Submission
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('reviewForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                
+                fetch('https://formspree.io/f/xnjavdqo', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Thank you for your review! We appreciate your feedback.');
+                        this.reset();
+                        closeReviewModal();
+                    } else {
+                        alert('Oops! There was a problem submitting your review. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('Oops! There was a problem submitting your review. Please try again.');
+                });
+            });
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Form Validation and Submission
+        document.getElementById('enquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Reset errors
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+            
+            // Validate Name
+            const name = document.getElementById('name').value.trim();
+            if (name.length < 3) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate Mobile
+            const mobile = document.getElementById('mobile').value.trim();
+            const mobileRegex = /^[6-9]\d{9}$/;
+            if (!mobileRegex.test(mobile)) {
+                document.getElementById('mobileError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate Email
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate Address
+            const address = document.getElementById('address').value.trim();
+            if (address.length < 5) {
+                document.getElementById('addressError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate Requirement
+            const requirement = document.getElementById('requirement').value.trim();
+            if (requirement.length < 10) {
+                document.getElementById('requirementError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Submit form to Formspree
+                const formData = new FormData(this);
+                
+                fetch('https://formspree.io/f/xnjavdqo', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        document.getElementById('successMessage').style.display = 'block';
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 5000);
+                    } else {
+                        alert('Oops! There was a problem submitting your form. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('Oops! There was a problem submitting your form. Please try again.');
+                });
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
